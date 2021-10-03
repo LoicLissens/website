@@ -1,0 +1,337 @@
+// Partie import
+@import "libs/modalmail";
+@import "libs/normalize";
+@import "libs/colors";
+@import "libs/componempts";
+@import "libs/animations";
+@import "libs/regexclass";
+
+// Site en général
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: white;
+  font-family: "Roboto Mono", monospace;
+  box-sizing: border-box;
+  color: $main-police;
+}
+h2 h3 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: $main-police;
+  &:hover {
+    color: $green-kaki;
+  }
+}
+.hover-underline {
+  text-decoration: none;
+  color: $main-police;
+  display: inline-block;
+  position: relative;
+  &:hover {
+    color: $green-kaki;
+  }
+}
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  width: 80%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 10px;
+  background-image: linear-gradient(to left top, $green-kaki);
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+  margin-bottom: 3px;
+}
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  background-color: $green-kaki;
+}
+
+// hearder
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 25px;
+
+  .logo-top {
+    position: relative;
+    &::after {
+      content: ".";
+      position: absolute;
+    }
+    &:hover:after {
+      animation: bounce 0.4s infinite alternate;
+    }
+  }
+}
+
+// Main
+// Main => nav bar
+.section {
+  box-shadow: 4px -1px 26px -2px rgba(255, 223, 223, 1);
+  width: 70%;
+  height: 70vh;
+  margin: auto;
+}
+.nav-main {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 35%;
+  left: 1vw;
+
+  text-align: center;
+  border: solid 5px $pastel-pink;
+  border-radius: 8px;
+  @media screen and (max-width: 1120px) {
+    position: static;
+    flex-direction: row;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+  a {
+    padding: 2vh;
+  }
+}
+.social-aside {
+  position: fixed;
+  top: 35%;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 650px) {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 25px;
+  }
+  a {
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+  }
+  svg {
+    fill: $pastel-pink;
+    &:hover {
+      fill: $green-kaki;
+    }
+  }
+  .triangle-container {
+    border: solid 3px $pastel-pink;
+    padding-right: 3px;
+  }
+  .traingle-up {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid $pastel-pink;
+    border-left: 15px solid transparent;
+
+    &:hover {
+      border-bottom: 25px solid $green-kaki;
+    }
+  }
+}
+// Main => presentation
+.main-intro {
+  box-shadow: 4px -1px 26px -2px rgba(255, 223, 223, 1);
+  width: 70%;
+  height: 70vh;
+  margin: auto;
+  margin-top: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 920px) {
+    flex-direction: column;
+    height: auto;
+  }
+  @media screen and (max-width: 650px) {
+    width: 90%;
+  }
+  .my-self {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    border-right: solid 2px $pastel-pink;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    @media screen and (max-width: 920px) {
+      border-right: none;
+      border-bottom: solid 2px $pastel-pink;
+      width: 70%;
+    }
+  }
+  .skills {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 25px;
+    align-items: center;
+    .dev-web-logo {
+      display: flex;
+      border-bottom: solid 2px $pastel-pink;
+      padding-bottom: 15px;
+      @media screen and (max-width: 410px) {
+        flex-direction: column;
+
+        align-items: center;
+      }
+      .dev-web-logo-row {
+        display: flex;
+      }
+    }
+    .design-logo {
+      display: flex;
+    }
+
+    .dev-web-logo-single {
+      img {
+        height: 30px;
+        width: 30px;
+        padding: 5px;
+
+        &:hover {
+          transform: scale(1.5, 1.5);
+        }
+      }
+      &:hover {
+        p {
+          display: block;
+        }
+      }
+    }
+  }
+}
+// main => portfolio
+.portefolio {
+  box-shadow: 4px -1px 26px -2px rgba(255, 223, 223, 1);
+  width: 70%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vh;
+
+  @media screen and (max-width: 650px) {
+    width: 90%;
+  }
+
+  .card-project {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+
+    @media screen and (max-width: 650px) {
+      flex-direction: column;
+    }
+  }
+  #page-two {
+    display: none;
+  }
+  #page-three {
+    display: none;
+  }
+}
+
+.pagination {
+  margin: 15px;
+  margin-top: 20px;
+  a {
+    border: solid 1px $main-police;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  .active {
+    border: solid 2px $pastel-pink;
+  }
+}
+// main => cv
+.cv {
+  @extend .main-intro;
+}
+// contact
+.contact {
+  @extend .main-intro;
+  flex-direction: column;
+  height: auto;
+  h2 {
+    margin-top: 15px;
+    margin-left: 0px;
+  }
+  .form-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    textarea {
+      margin-top: 10px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+
+    button {
+      margin: 10px;
+      padding: 5px;
+      font-size: 12px;
+      margin-bottom: 5px;
+      color: $main-police;
+      background-color: $pastel-pink;
+      border-radius: 5px;
+      border: none;
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        box-shadow: 0px 5px 5px 0px $main-police;
+        transform: scale(1.1);
+      }
+    }
+    .button-disabled {
+      @extend button;
+      background-color: lightgray;
+      &:hover {
+        cursor: not-allowed;
+      }
+      &:active {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+textarea {
+  resize: none;
+  width: 400px;
+  @media screen and (max-width: 460px) {
+    width: 350px;
+  }
+  @media screen and (max-width: 400px) {
+    width: auto;
+  }
+}
+
+// Footer
+footer {
+  height: 5vh;
+}
