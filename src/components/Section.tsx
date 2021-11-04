@@ -5,7 +5,7 @@ type SectionProps = {
 }
 const Section = ({children}:SectionProps): JSX.Element => {
     return (
-        <section className="section">
+        <section>
             {children}
         </section>
     )
