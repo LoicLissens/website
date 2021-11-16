@@ -4,6 +4,7 @@ export const cardsData: PortfolioCardProps[] = [
   {
     cardTitle: "Chat NodeJs",
     description: "Création d'un chat en temps réel basé sur NodeJS lors de ma formation Becode Charleroi.",
+    screenProject: { link: "../images/screen-card/chat-node.png", alt: "Scrrenshot projet" },
     links: [
       {
         link: "https://github.com/LoicLissens/chat-node-js",

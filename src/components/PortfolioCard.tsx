@@ -1,9 +1,10 @@
 import * as React from "react";
+import { StaticImage } from "gatsby-plugin-image";
 
 export interface PortfolioCardProps {
   cardTitle: string;
   svgAnimation?: { link: string; alt: string };
-  screnPoject?: { link: string; alt: string };
+  screenProject?: { link: string; alt: string };
   links: { link: string; text: string }[];
   description: string;
 }
@@ -13,8 +14,8 @@ const PortfolioCard = (props: PortfolioCardProps) => {
       <div className="flip-card">
         <div className="card-front">
           <h2>{props.cardTitle}</h2>
-          <img src="assets/images/anim-card/chat.svg" alt="Animation chat" />
-          <img width="250px" height="120px" className="screen-project" src="assets/images/screen-card/chat-node.png" alt="Scrrenshot projet" />
+          {/* <img src={svg} /> */}
+          <StaticImage width={250} height={120} src={props.screenProject.link} alt={props.screenProject.alt} className="screen-project" />
         </div>
         <div className="card-back">
           <h2>{props.cardTitle}</h2>
