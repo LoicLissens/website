@@ -26,8 +26,15 @@ import figmaLogo from "../images/figma.svg";
 import dockerLogo from "../images/docker.svg";
 // @ts-ignore
 import vscodeLogo from "../images/visualstudiocode.svg";
-
+import { useState } from "react";
+import InfoTechno from "./InfoTechno";
 const Intro = () => {
+  const [infoLanguage, setInfoLanguage] = useState(false);
+  const [selectedTechno, setSelectedTechno] = useState(null);
+  const handleTechnoClick = (techno: string) => {
+    setInfoLanguage(!infoLanguage);
+    selectedTechno ? setSelectedTechno(null) : setSelectedTechno(techno);
+  };
   return (
     <div className="main-intro">
       <article className="my-self">
@@ -49,16 +56,18 @@ const Intro = () => {
         <div className="dev-web-logo">
           <div className="dev-web-logo-row">
             <Tooltip content="HTML5">
-              <div className="dev-web-logo-single">
+              <div className="dev-web-logo-single" >
                 <img src={htmlLogo} alt="HTML 5" />
               </div>
             </Tooltip>
             <div className="dev-web-logo-single">
               <img src={cssLogo} alt="CSS 3" />
             </div>
-            <div className="dev-web-logo-single">
-              <img src={jsLogo} alt="javascript" />
-            </div>
+            <Tooltip content="Javascript">
+              <div style={{ cursor: "pointer" }} className="dev-web-logo-single"  onClick={()=>handleTechnoClick('Javascript')}>
+                <img src={jsLogo} alt="javascript" />
+              </div>
+            </Tooltip>
             <div className="dev-web-logo-single">
               <img src={sassLogo} alt="Sass" />
             </div>
@@ -97,6 +106,7 @@ const Intro = () => {
             <img src={vscodeLogo} alt="VSCode" />
           </div>
         </div>
+        {infoLanguage && selectedTechno && <InfoTechno techno={selectedTechno} />}
       </article>
     </div>
   );

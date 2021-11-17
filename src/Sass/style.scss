@@ -218,6 +218,13 @@ a {
         }
       }
     }
+    .info-techno {
+      border-top: solid 2px $pastel-pink;
+      width: 100%;
+      h4 {
+        text-align: center;
+      }
+    }
   }
 }
 // main => portfolio
